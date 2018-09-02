@@ -22,6 +22,7 @@ public class Tela extends JFrame {
      */
     public Tela() {
         initComponents();
+        setLocationRelativeTo(null);
     }
         public static int Xinicial = 0;
         public static int Yinicial = 0;
@@ -182,6 +183,7 @@ public class Tela extends JFrame {
                 new Tela().setVisible(true);
                 BresenhamAlgorithm bresenham = new BresenhamAlgorithm();//Classe responsável pelo desenho da linha
                 DrawClickedPoint gcp = new DrawClickedPoint(); //contem metodo para desenhar um X vermelho no ponto clicado
+                
                 front_panel.addMouseListener(new MouseAdapter() {
                     Graphics g = front_panel.getGraphics();
                     @Override
