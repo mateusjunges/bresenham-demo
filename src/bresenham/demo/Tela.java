@@ -51,7 +51,7 @@ public class Tela extends JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         window_title.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        window_title.setText("Clique em dois pontos da tela para desenhar uma linha");
+        window_title.setText("Linhas com o Algoritmo de Bresenham");
 
         front_panel.setBackground(new java.awt.Color(255, 255, 255));
         front_panel.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,10 +109,10 @@ public class Tela extends JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(front_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
-                .addComponent(window_title, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(250, 250, 250))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(413, 413, 413)
+                .addComponent(window_title)
+                .addContainerGap(423, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
