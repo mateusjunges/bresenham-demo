@@ -17,10 +17,11 @@ public class DrawClickedPoint extends JPanel{
     
     public void paintComponent(Graphics g, int X, int Y){
         g.setColor(Color.red);
-        g.drawLine(X, Y, X+10, Y+10);
-        g.drawLine(X, Y, X+10, Y-10);
-        g.drawLine(X, Y, X-10, Y-10);
-        g.drawLine(X, Y, X-10, Y+10);
+        int lineSize = 10;
+        g.drawLine(X, Y, X+lineSize, Y+lineSize);
+        g.drawLine(X, Y, X+lineSize, Y-lineSize);
+        g.drawLine(X, Y, X-lineSize, Y-lineSize);
+        g.drawLine(X, Y, X-lineSize, Y+lineSize);
         
     }
 }
