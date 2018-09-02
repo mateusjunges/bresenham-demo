@@ -140,7 +140,7 @@ public class Tela extends JFrame {
                             Xfinal  = e.getX();
                             Yfinal = e.getY();
                             i = 0;
-                            
+                            Graphics g = front_panel.getGraphics();
                             //Aqui eu já tenho os dois pontos para desenhar a reta:
                             bresenham.paintComponent(g, Xinicial, Xfinal, Yinicial, Yfinal);
                         }
