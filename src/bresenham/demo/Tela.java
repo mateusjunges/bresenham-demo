@@ -41,21 +41,67 @@ public class Tela extends JFrame {
         jPanel1 = new javax.swing.JPanel();
         window_title = new javax.swing.JLabel();
         front_panel = new javax.swing.JPanel();
+        footer = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
+        uepg = new java.awt.Label();
+        eng_comp = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         window_title.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         window_title.setText("Clique em dois pontos da tela para desenhar uma linha");
+
+        front_panel.setBackground(new java.awt.Color(255, 255, 255));
+        front_panel.setForeground(new java.awt.Color(255, 255, 255));
+
+        footer.setBackground(new java.awt.Color(255, 255, 255));
+
+        label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label1.setText("Mateus Felipe da Silva Junges");
+
+        uepg.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        uepg.setText("Universidade Estadual de Ponta Grossa");
+
+        eng_comp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        eng_comp.setText("Engenharia de Computação - Computação gráfica");
+
+        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
+        footer.setLayout(footerLayout);
+        footerLayout.setHorizontalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eng_comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uepg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        footerLayout.setVerticalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(uepg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(eng_comp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout front_panelLayout = new javax.swing.GroupLayout(front_panel);
         front_panel.setLayout(front_panelLayout);
         front_panelLayout.setHorizontalGroup(
             front_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         front_panelLayout.setVerticalGroup(
             front_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, front_panelLayout.createSequentialGroup()
+                .addGap(0, 659, Short.MAX_VALUE)
+                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -123,16 +169,19 @@ public class Tela extends JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Tela().setVisible(true);
                 BresenhamAlgorithm bresenham = new BresenhamAlgorithm();//Classe responsável pelo desenho da linha
-               
+                DrawClickedPoint gcp = new DrawClickedPoint(); //contem metodo para desenhar um X vermelho no ponto clicado
                 front_panel.addMouseListener(new MouseAdapter() {
+                    Graphics g = front_panel.getGraphics();
                     @Override
                     public void mouseClicked(MouseEvent e){
                         if (isFirstClick()){ //se for o primeiro click, leio os pontos iniciais
                             Xinicial = e.getX();
                             Yinicial = e.getY();
+                            gcp.paintComponent(g, Xinicial, Yinicial);
                             Xfinal  = 0;
                             Yfinal = 0;
                             i = 1;
@@ -140,7 +189,7 @@ public class Tela extends JFrame {
                             Xfinal  = e.getX();
                             Yfinal = e.getY();
                             i = 0;
-                            Graphics g = front_panel.getGraphics();
+                            gcp.paintComponent(g, Xfinal, Yfinal);
                             //Aqui eu já tenho os dois pontos para desenhar a reta:
                             bresenham.paintComponent(g, Xinicial, Xfinal, Yinicial, Yfinal);
                         }
@@ -155,8 +204,12 @@ public class Tela extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static java.awt.Label eng_comp;
+    private static javax.swing.JPanel footer;
     private static javax.swing.JPanel front_panel;
     private javax.swing.JPanel jPanel1;
+    private java.awt.Label label1;
+    private static java.awt.Label uepg;
     private static javax.swing.JLabel window_title;
     // End of variables declaration//GEN-END:variables
 }
